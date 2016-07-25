@@ -29,8 +29,11 @@ img{max-width:100%;}
 /*end reset*/
 html, body{
     font-size: 100%;
-	background:#009BB2;
+    
+   background: url(../images/bbb.jpg)no-repeat;
 	font-family: 'Questrial', sans-serif;
+    
+       background-size: cover;
 }
 body{
 	padding-bottom:3em;
@@ -49,8 +52,6 @@ body a:hover,body a{
 body{
   font-family: 'Montserrat', sans-serif;
    font-size: 100%;
-   background: url(../images/bbb.jpg)no-repeat;
-       background-size: cover;
 }
 /*-- main --*/
 .copyright p{

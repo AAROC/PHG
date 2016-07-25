@@ -14,45 +14,11 @@ A SCI-GaIA Based project.
 -->
 <!DOCTYPE html>
 
+<!DOCTYPE html>
 
-<html>
-<head>
-    <title>PHG WEB PORTAL DEM</title>
-    <!-- for-mobile-apps -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Easy Multiple Forms Widget Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-    <script type="application/x-javascript">
-        addEventListener("load", function() {
-            setTimeout(hideURLbar, 0);
-        }, false);
-
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        }
-    </script>
-    <!-- //for-mobile-apps -->
-    <!-- js -->
-    <script src="js/jquery-1.11.1.min.js"></script>
-    <!-- //js -->
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <link href='//fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
-</head>
-<title>Public health gateway</title>
-<!-- for-mobile-apps -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-				<div class="w3l_main_grids_right_grid1">
-					<form action="#" method="post">
-						<input type="text" name="Username" placeholder="Your Username" required=" ">
-						<input placeholder="Passphrase" name="Password" type="password" required="">
-						<input type="submit" value="Submit">
-					</form>
-					<div class="close1"> </div>
-					<?php
-
+<?php
+    
+    
 						$password = $_POST['Password'];
 						$Username = $_POST['Username'];
 
@@ -96,12 +62,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							{
 								# login failure
 								echo "login failure";
-								
-							}
-							
-
-
-							//echo json_decode($result, true)[2];
+                            }
 
 
 						}
@@ -110,20 +71,75 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							echo $e;
 						}
 
-    
+	?>
 
-					?>
-				</div>
+    <html>
+
+    <head>
+        <title>PHG WEB PORTAL DEM</title>
+        <!-- for-mobile-apps -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="keywords" content="Easy Multiple Forms Widget Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+        <script type="application/x-javascript">
+            addEventListener("load", function() {
+                setTimeout(hideURLbar, 0);
+            }, false);
+
+            function hideURLbar() {
+                window.scrollTo(0, 1);
+            }
+
+        </script>
+        <!-- //for-mobile-apps -->
+        <!-- js -->
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <!-- //js -->
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+        <link href='//fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
+    </head>
+
+    <body>
+        <div class="main">
+            <div>
+                <h1><image src="images/group.png" alt=""/>PHG WEB PORTAL DEMO </h1>
+
+            </div>
+            <div class="w3l_main_grids">
+                <div class="clear"> </div>
+                <div class="wthree_leave_your_comment">
+                    <div class="w3l_main_grids_right_grid1">
+                        <form action="#" method="post">
+                            <input type="text" name="Username" placeholder="Your Username" required=" ">
+                            <input placeholder="Passphrase" name="Password" type="password" required="">
+                            <input type="submit" value="Submit">
+                        </form>
+
+                        <div class="close1"> </div>
+
+                    </div>
 
 
+                </div>
+                <div class="clear"> </div>
+                <div class="close4"> </div>
+            </div>
+            <script>
+                $(document).ready(function(c) {
+                    $('.close4').on('click', function(c) {
+                        $('.wthree_leave_your_comment').fadeOut('slow', function(c) {
+                            $('.wthree_leave_your_comment').remove();
+                        });
+                    });
+                });
 
+            </script>
+        </div>
+        <div class="copyright">
+            <p> <a style="Color:white" href="https://github.com/AAROC/PHG">© 2016 Pulic Health Gateway . All rights reserved</a>| Design by <a href="http://w3layouts.com" style="Color:white">W3layouts</a></p>
+        </div>
+        </div>
+    </body>
 
-
-
-
-		<div class="copyright">
-			<p>© 2016 Easy Multiple Forms Widget. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
-		</div>
-	</div>
-</body>
-</html>
+    </html>
