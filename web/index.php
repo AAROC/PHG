@@ -50,20 +50,6 @@ A SCI-GaIA Based project.
 							$data = json_decode($result);
 							
 
-							if (!$data->error) {
-								#success
-								
-
-								header('Location: record.php');
-								exit();
-
-							}
-							else
-							{
-								# login failure
-								echo "login failure";
-                            }
-
 
 						}
 						catch(Exception $e)
@@ -117,6 +103,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </form>
 
                         <div class="close1"> </div>
+                        <?php
+                            if (!$data->error) {
+                                #success
+                                session_start();
+                                $_SESSION["token"] = $data->id;
+                                
+
+                                header('Location: record.php');
+                                exit();
+
+                            }
+                            else
+                            {
+                                # login failure
+                                echo "Incorrect Username or Password";
+                            }
+                        ?>
 
                     </div>
 

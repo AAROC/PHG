@@ -39,6 +39,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link href='//fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
 </head>
 
+<?php
+    session_start();
+    $token = $_SESSION["token"];
+    //echo $token;
+?>
+
 <body>
     <div class="main">
         <div>
