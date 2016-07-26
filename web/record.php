@@ -347,9 +347,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <input type="text" name="passagerno" placeholder=" Passanger No" required=" ">
 
 
-
-
-                    </form>
                 </div>
                 <div class="wthree_leave_your_commentr">
 
@@ -370,9 +367,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
 
 
-
-
-                    <form action="#" method="post">
 
                         <h4>Your Comment Here*</h4>
                         <textarea name="Message" placeholder="Type Your Text Here...." required=" "></textarea>
