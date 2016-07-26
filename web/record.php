@@ -69,6 +69,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             var map;
             map_initialize(); // load map
             initAutocomplete();
+			geoLocate();
 
             function map_initialize() {
                 //Google map option
@@ -127,6 +128,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 
+				
+			}
+			
+			
             function initAutocomplete() {
 
                 // Create the search box and link it to the UI element.
@@ -169,7 +174,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             anchor: new google.maps.Point(17, 34),
                             scaledSize: new google.maps.Size(25, 25)
                         };
-
+				
                         // Create a marker for each place.
                         markers.push(new google.maps.Marker({
                             map: map,
@@ -188,7 +193,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     map.fitBounds(bounds);
                 });
             }
-
+		
+		
+		
+		
+			
         });
 
     </script>
