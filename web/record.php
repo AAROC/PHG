@@ -53,10 +53,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 	<!-- //for-mobile-apps -->
 	<!-- js -->
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/map.js"></script>
+	
 
 	<!-- //js -->
 	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -64,6 +66,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<script type="text/javascript" src="//www.sanwebe.com/wp-content/themes/sanwebe-lite/js/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyBwvyOwVQpg2UDaGeohdIdD1qIU0eBOuNU&libraries=places&sensor=false"></script>
+
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootbox.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 				var mapCenter = new google.maps.LatLng(47.6145, -122.3418); //Google map Coordinates
@@ -313,6 +318,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		})();
 
 	</script>
+
+
+
+
+
+
+	<script>
+        $(document).on("click", ".alert", function(e) {
+            bootbox.alert("Hello Success!", function() {
+                console.log("Alert Callback");
+            });
+        });
+    </script>
 </head>
 
 <?php
@@ -365,12 +383,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							$jsonDecoded = json_decode($result, true);
 							
 							if ($jsonDecoded['id']) {
+
+								
 								# success
 								echo "Posted Successfully";
+
+								echo"<p>Content here. <a class='alert' href=#>Alert!</a></p>";
+
+
+
 							}
 							else
 							{
-								echo $jsonDecoded['error']['message'];
+								$errorMessage = $jsonDecoded['error']['message'];
+								echo $errorMessage;
+								
+								echo "<script type='text/javascript'>
+
+										
+
+							        
+							            bootbox.alert('An Error Occured', function() {
+							                console.log('Alert Callback');
+							            });
+							      
+							    </script>";
+
+								
 							}
 
 
