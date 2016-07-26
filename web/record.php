@@ -408,10 +408,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 								
 								# success
-								echo "Posted Successfully";
+								echo "Success!";
 
-								echo"<p>Content here. <a class='alert' href=#>Alert!</a></p>";
+								echo "<script type='text/javascript'>
 
+										
+
+							        
+							            bootbox.alert('Success!', function() {
+							                console.log('Alert Callback');
+							            });
+							      
+							    </script>";
+
+							
 
 
 							}
@@ -470,6 +480,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<form action="#" method="post">
 								<h4>County*</h4>
 								<input type="text" name="county" placeholder="Your County" required=" ">
+
+								<h4>Date*</h4>	<input type="text" name="date" placeholder="Date of accident " required=" ">
 								
 								<div style="float: right">
 									<h4>Severity*</h4>
