@@ -520,7 +520,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</script>
 				</div>
 			</div>
-
+			<p></p>
 
 
 			<input id="pac-input" class="controls" type="text" placeholder="Search Box" style="margin-top:10px; min-height:31px" onkeypress="initAutocomplete()">
