@@ -396,7 +396,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         
       
 		
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box" onkeypress="initAutocomplete()">
+    <input id="pac-input" class="controls" type="text" placeholder="Search Box" style="margin-top:10px; min-height:31px" onkeypress="initAutocomplete()">
 
 
     <div id="google_map"></div>
