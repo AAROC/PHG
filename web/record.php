@@ -45,7 +45,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-
 	<!-- Latest compiled and minified JavaScript -->
 
 
@@ -67,10 +66,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script type="text/javascript" src="//www.sanwebe.com/wp-content/themes/sanwebe-lite/js/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyBwvyOwVQpg2UDaGeohdIdD1qIU0eBOuNU&libraries=places&sensor=false"></script>
 
+
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/bootbox.min.js"></script>
+
+	  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="js/moment.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.css"/>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+ 
+	<link rel="stylesheet" href="css/datepicker.css"/>
+	<script src="datepicker/datepicker.js"></script>
+	
+	 <script>
+  $( function() {
+	  $('#basic_example_1').datetimepicker();
+  } );
+  </script>
+
+
 	<script type="text/javascript">
+		
 		$(document).ready(function() {
+		
 				var mapCenter = new google.maps.LatLng(47.6145, -122.3418); //Google map Coordinates
 				var map;
 				map_initialize(); // load map
@@ -103,6 +124,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							icon: "images/pin_green.png" //custom pin icon
 						});
 						var position = event.latLng;
+						
 
 
 						document.cookie = "latLang=position";
@@ -434,6 +456,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div style="margin-top: -39px;">
 				<h1 style style="font-size: 1.8em;"><image src="images/group.png" alt=""/>PHG WEB PORTAL DEMO </h1>
 
+         <!--input class="hasDatepicker" name="basic_example_1" id="basic_example_1" value="" type="text"-->
+ 
 			</div>
 			<!-- Modal -->
 			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -446,9 +470,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<form action="#" method="post">
 								<h4>County*</h4>
 								<input type="text" name="county" placeholder="Your County" required=" ">
-								<h4>Date*</h4>
-								<input type="text" name="date" placeholder="Date of accident " required=" ">
-
+								
 								<div style="float: right">
 									<h4>Severity*</h4>
 									<select type="text" name="severity">
@@ -526,7 +548,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</form>
 						</div>
 						<div class="clear"> </div>
-						<div class="close4"> </div>
+						<div class="close4"><button aria-label="Close" type="button" class="close" data-dismiss="modal"></button> </div>
 					</div>
 					<script>
 						$(document).ready(function(c) {
@@ -540,7 +562,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</script>
 				</div>
 			</div>
-
+			<p></p>
 
 
 			<input id="pac-input" class="controls" type="text" placeholder="Search Box" style="margin-top:10px; min-height:31px" onkeypress="initAutocomplete()">
@@ -549,7 +571,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div id="google_map"></div>
 
 			<div class="copyright">
-				<p> <a style="Color:white" href="https://github.com/AAROC/PHG">© 2016 Pulic Health Gateway . All rights reserved</a>| Design by <a href="http://w3layouts.com" style="Color:white">W3layouts</a></p>
+				<p  > <a style="Color:white" href="https://github.com/AAROC/PHG">© 2016 Pulic Health Gateway .</a> <a style="Color:white" href="http://www.sci-gaia.eu/">A SCI-GaIA project</a></p>
 			</div>
 
 		</div>
