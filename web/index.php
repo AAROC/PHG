@@ -140,7 +140,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </script>
         </div>
         <div class="copyright">
-            <p> <a style="Color:white" href="https://github.com/AAROC/PHG">© 2016 Pulic Health Gateway . All rights reserved</a>| Design by <a href="http://w3layouts.com" style="Color:white">W3layouts</a></p>
+           	<p  > <a style="Color:white" href="https://github.com/AAROC/PHG">© 2016 Pulic Health Gateway .</a> <a style="Color:white" href="http://www.sci-gaia.eu/">A SCI-GaIA project</a></p>
         </div>
         </div>
     </body>
