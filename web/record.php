@@ -272,7 +272,66 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <?php
     session_start();
     $token = $_SESSION["token"];
-    //echo $token;
+
+    $county = $_POST["county"];
+    $date = $_POST["date"];
+    $severity = $_POST["severity"];
+    $category = $_POST["category"];
+    $surface = $_POST["surface"];
+    $weather = $_POST["weather"];
+    $location = $_POST["location"];
+    $passagerno = $_POST["passagerno"];
+    $vehiclemake = $_POST["vehiclemake"];
+    $vehiclemodel = $_POST["vehiclemodel"];
+    $vehicleplate = $_POST["vehicleplate"];
+    $description = $_POST["description"];
+
+    //echo $token.$date.$description.$category.$surface.$weather.$location.$passagerno.$vehiclemake.$vehiclemodel.$vehicleplate.$message;
+
+    				try{
+						
+						$ENDPOINT = "http://glibrary.ct.infn.it:3500/v2/repos/phg/accident_police";
+						$HEADER = "Authorization: ".$token;
+						$HEADER2 = "Content-Type: application/json";
+						$body = json_encode(array("location" => $location, "date" => $date //"severity" => $severity
+							, "roadLayout" => $category, "surface" => $surface, "weather" => $weather, "passengers" => $passagerno
+							, "vehicleMake" => $vehiclemake, "vehicleModel" => $vehiclemodel, "county" => $county
+							, "vehiclePlates" => $vehicleplate, "description" => $description));
+						//$body =  "";
+
+							$ch = curl_init(); // intialize curl
+							curl_setopt($ch, CURLOPT_URL, $ENDPOINT); // point to endpoint 
+							//curl_setopt($ch, CURLOPT_HEADER, $HEADER); // if no headers
+
+							curl_setopt($ch,CURLOPT_HTTPHEADER,array($HEADER, $HEADER2));
+
+							curl_setopt($ch, CURLOPT_VERBOSE, '1'); // not verbal
+							curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+							curl_setopt($ch, CURLOPT_POSTFIELDS, $body);  //data
+							curl_setopt($ch, CURLOPT_TIMEOUT, 60);// request time out
+							curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, '0'); // no ssl verifictaion
+							curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, '0');
+
+							$result=curl_exec($ch);
+
+							
+							$jsonDecoded = json_decode($result, true);
+							
+							if ($jsonDecoded['id']) {
+								# success
+								echo "Posted Successfully";
+							}
+							else
+							{
+								echo $jsonDecoded['error']['message'];
+							}
+
+
+						}
+						catch(Exception $e)
+						{
+							echo $e;
+						}
 ?>
 
 	<body>
@@ -298,7 +357,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 								<div style="float: right">
 									<h4>Severity*</h4>
-									<select type="text" name="description">
+									<select type="text" name="severity">
                         
                             <option type="text"value="1">1</option>
                             <option type="text"value="2">2</option>
@@ -308,7 +367,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </select>
 									<h4>Road Category*</h4>
 
-									<select type="text" name="description">
+									<select type="text" name="category">
                         
                             <option type="text"value="highway">Highway</option>
                             <option type="text"value="driveway">Driveway</option>
@@ -319,7 +378,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 
 								<h4>Surface*</h4>
-								<select type="text" name="description">
+								<select type="text" name="surface">
                         
                             <option type="text"value="tarmac">Tarmac </option>
                             <option type="text"value="dirt">Dirt </option>
@@ -329,7 +388,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </select>
 
 								<h4>Weather*</h4>
-								<select type="text" name="description">
+								<select type="text" name="weather">
                         
                             <option type="text"value="normal">NORMAL</option>
                             <option type="text"value="fog">FOG</option>
@@ -342,7 +401,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<h4>Location*</h4>
 								<input type="text" name="location" placeholder="Accident Location" required=" ">
 
-								<h4>Passangers*</h4>
+								<h4>Passengers*</h4>
 								<input type="text" name="passagerno" placeholder=" Passanger No" required=" ">
 
 
@@ -368,7 +427,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 							<h4>Your Comment Here*</h4>
-							<textarea name="Message" placeholder="Type Your Text Here...." required=" "></textarea>
+							<textarea name="description" placeholder="Type Your Text Here...." required=" "></textarea>
 							<input type="submit" value="Submit">
 							</form>
 						</div>
