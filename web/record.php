@@ -134,7 +134,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							'<h1 class="marker-heading">New Marker</h1>' +
 							'This is a new marker infoWindow' +
 							'</span>' +
-							'<br /><button name="remove-marker" class="remove-marker" title="Remove Marker" style="margin-top: 10px;">Remove Marker</button> <button name="report-marker" value="' + position + '" title="Report" style="margin-top: 10px;"class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Record</button></div></div>');
+							'<br /><button name="remove-marker" class="remove-marker" title="Remove Marker" style="margin-top: 10px;">Remove Marker</button> <button id="geoPositionLocation" name="report-marker" value="' + position + '" title="Report" style="margin-top: 10px;"class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Record</button></div></div>');
+
+						document.cookie = "geoPositionLocation="+position;
 
 						//Create an infoWindow
 						var infowindow = new google.maps.InfoWindow();
@@ -147,6 +149,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							infowindow.open(map, marker); // click on marker opens info window 
 
 							document.getElementById('latlang').value = "ssssssss";
+
 						});
 
 
@@ -359,6 +362,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     session_start();
     $token = $_SESSION["token"];
 
+    $gps = $_COOKIE['geoPositionLocation'];
+
 
     $county = $_POST["county"];
     $date = $_POST["date"];
@@ -373,17 +378,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     $vehicleplate = $_POST["vehicleplate"];
     $description = $_POST["description"];
 
-    //echo $token.$date.$description.$category.$surface.$weather.$location.$passagerno.$vehiclemake.$vehiclemodel.$vehicleplate.$message;
-
-    				try{
+    		
+    
+				try{
 						
 						$ENDPOINT = "http://glibrary.ct.infn.it:3500/v2/repos/phg/accident_police";
 						$HEADER = "Authorization: ".$token;
 						$HEADER2 = "Content-Type: application/json";
 						$body = json_encode(array("location" => $location, "date" => $date //"severity" => $severity
 							, "roadLayout" => $category, "surface" => $surface, "weather" => $weather, "passengers" => $passagerno
-							, "vehicleMake" => $vehiclemake, "vehicleModel" => $vehiclemodel, "county" => $county
-							, "vehiclePlates" => $vehicleplate, "description" => $description));
+							, "vehicleMake" => $vehiclemake, "vehicleModel" => $vehiclemodel, "county" => $county, "severity" => $severity
+							, "vehiclePlates" => $vehicleplate, "description" => $description, "gps" => $gps));
 						//$body =  "";
 
 							$ch = curl_init(); // intialize curl
@@ -399,49 +404,47 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, '0'); // no ssl verifictaion
 							curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, '0');
 
-							$result=curl_exec($ch);
-
-							
-							$jsonDecoded = json_decode($result, true);
-							
-							if ($jsonDecoded['id']) {
-
-								
-								# success
-								echo "Success!";
-
-								echo "<script type='text/javascript'>
-
-										
-
-							        
-							            bootbox.alert('Success!', function() {
-							                console.log('Alert Callback');
-							            });
-							      
-							    </script>";
-
 							
 
+							if ($county != null && $location != null) {
 
-							}
-							else
-							{
-								$errorMessage = $jsonDecoded['error']['message'];
-								echo $errorMessage;
+								$result=curl_exec($ch);								
+								$jsonDecoded = json_decode($result, true);
+							
+								if ($jsonDecoded['id']) {
+
+									
+									# success
+									echo "Success!";
+
+									echo "<script type='text/javascript'>
+
+								            bootbox.alert('Success!', function() {
+								                console.log('Alert Callback');
+								            });
+								      
+								    </script>";
+
 								
-								echo "<script type='text/javascript'>
 
-										
 
-							        
-							            bootbox.alert('An Error Occured', function() {
-							                console.log('Alert Callback');
-							            });
-							      
-							    </script>";
+								}
+								else
+								{
+									$errorMessage = $jsonDecoded['error']['message'];
+									echo $errorMessage;
+									
+									echo "<script type='text/javascript'>
 
-								
+								            bootbox.alert('Error Occured', function() {
+								                console.log('Alert Callback');
+
+								            });
+								      
+								    </script>";
+
+									
+								}
 							}
 
 
@@ -450,6 +453,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						{
 							echo $e;
 						}
+			
 
 	
 	 $phpVar =  $_COOKIE['latLang'];
