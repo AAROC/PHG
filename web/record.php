@@ -415,7 +415,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 									
 									# success
-									echo "Success!";
+									//echo "Success!";
 
 									echo "<script type='text/javascript'>
 
@@ -458,7 +458,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 	 $phpVar =  $_COOKIE['latLang'];
 
-   echo $phpVar;
+   //echo $phpVar;
     //echo $token;
 
 ?>
