@@ -20,7 +20,7 @@ A SCI-GaIA Based project.
 	<!-- for-mobile-apps -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="Easy Multiple Forms Widget Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+	<meta name="keywords" content="Easy Multiple Forms Widget Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 	<script type="application/x-javascript">
 		addEventListener("load", function() {
@@ -70,10 +70,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.css"/>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
- 
+
 	<link rel="stylesheet" href="css/datepicker.css"/>
 	<script src="datepicker/datepicker.js"></script>
-	
+
 	 <script>
   $( function() {
 	  $('#basic_example_1').datetimepicker();
@@ -81,9 +81,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   </script>
 
 	<script type="text/javascript">
-		
+
 		$(document).ready(function() {
-		
+
 				var mapCenter = new google.maps.LatLng(47.6145, -122.3418); //Google map Coordinates
 				var map;
 				map_initialize(); // load map
@@ -110,13 +110,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						var marker = new google.maps.Marker({
 							position: event.latLng, //map Coordinates where user right clicked
 							map: map,
-							draggable: true, //set marker draggable 
+							draggable: true, //set marker draggable
 							animation: google.maps.Animation.DROP, //bounce animation
 							title: "Hello World!",
 							icon: "images/pin_green.png" //custom pin icon
 						});
 						var position = event.latLng;
-						
+
 
 
 						document.cookie = "latLang=position";
@@ -126,7 +126,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							'<h1 class="marker-heading">New Marker</h1>' +
 							'This is a new marker infoWindow' +
 							'</span>' +
-							'<br /><button name="remove-marker" class="remove-marker" title="Remove Marker" style="margin-top: 10px;">Remove Marker</button> <button name="report-marker" value="' + position + '" title="Report" style="margin-top: 10px;"class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Record</button></div></div>');
+							'<br /><button name="remove-marker"  class="remove-marker" title="Remove Marker" style="margin-top: 10px;">Remove Marker</button> <button name="report-marker" id="theposition" value="' + position + '" title="Report" style="margin-top: 10px;"class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Record</button></div></div>');
 
 						//Create an infoWindow
 						var infowindow = new google.maps.InfoWindow();
@@ -134,11 +134,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						//set the content of infoWindow
 						infowindow.setContent(contentString[0]);
 
-						//add click listner to marker which will open infoWindow 		 
+						//add click listner to marker which will open infoWindow
 						google.maps.event.addListener(marker, 'click', function() {
-							infowindow.open(map, marker); // click on marker opens info window 
+							infowindow.open(map, marker); // click on marker opens info window
 
-							document.getElementById('latlang').value = "ssssssss";
+							alert(document.getElementById('theposition').value) ;
 						});
 
 
@@ -264,7 +264,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			font: 18px Georgia, "Times New Roman", Times, serif;
 		}
 		/* width and height of google map */
-		
+
 		#google_map {
 			width: 100%;
 			height: 500px;
@@ -275,7 +275,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			border-radius: 5px;
 		}
 		/* Marker Info Window */
-		
+
 		h1.marker-heading {
 			color: #585858;
 			margin: 0px;
@@ -283,16 +283,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			font: 18px "Trebuchet MS", Arial;
 			border-bottom: 1px dotted #D8D8D8;
 		}
-		
+
 		div.marker-info-win p {
 			padding: 0px;
 			margin: 10px 0px 10px 0;
 		}
-		
+
 		div.marker-inner-win {
 			padding: 5px;
 		}
-		
+
 		button.save-marker,
 		button.remove-marker {
 			border: none;
@@ -337,10 +337,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <?php
     session_start();
     $token = $_SESSION["token"];
-
-
     $county = $_POST["county"];
     $date = $_POST["date"];
+	//$date = date("Y-m-d H:i:s",time())
+
     $severity = $_POST["severity"];
     $category = $_POST["category"];
     $surface = $_POST["surface"];
@@ -352,10 +352,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     $vehicleplate = $_POST["vehicleplate"];
     $description = $_POST["description"];
 
+
+
+$doc = new DomDocument();
+$thediv = $doc->getElementById('theposition');
+echo $thediv->textContent."sssssssssssssss";
+
+
+
     //echo $token.$date.$description.$category.$surface.$weather.$location.$passagerno.$vehiclemake.$vehiclemodel.$vehicleplate.$message;
 
     				try{
-						
+
 						$ENDPOINT = "http://glibrary.ct.infn.it:3500/v2/repos/phg/accident_police";
 						$HEADER = "Authorization: ".$token;
 						$HEADER2 = "Content-Type: application/json";
@@ -366,7 +374,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						//$body =  "";
 
 							$ch = curl_init(); // intialize curl
-							curl_setopt($ch, CURLOPT_URL, $ENDPOINT); // point to endpoint 
+							curl_setopt($ch, CURLOPT_URL, $ENDPOINT); // point to endpoint
 							//curl_setopt($ch, CURLOPT_HEADER, $HEADER); // if no headers
 
 							curl_setopt($ch,CURLOPT_HTTPHEADER,array($HEADER, $HEADER2));
@@ -380,9 +388,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 							$result=curl_exec($ch);
 
-							
+
 							$jsonDecoded = json_decode($result, true);
-							
+
 							if ($jsonDecoded['id']) {
 								# success
 								echo "Posted Successfully";
@@ -399,7 +407,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							echo $e;
 						}
 
-	
+
 	 $phpVar =  $_COOKIE['latLang'];
 
    echo $phpVar;
@@ -409,13 +417,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 
+
 	<body>
 		<div class="main">
 			<div style="margin-top: -39px;">
 				<h1 style style="font-size: 1.8em;"><image src="images/group.png" alt=""/>PHG WEB PORTAL DEMO </h1>
 
          <!--input class="hasDatepicker" name="basic_example_1" id="basic_example_1" value="" type="text"-->
- 
+
 			</div>
 			<!-- Modal -->
 			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -428,11 +437,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<form action="#" method="post">
 								<h4>County*</h4>
 								<input type="text" name="county" placeholder="Your County" required=" ">
-								
+
 								<div style="float: right">
 									<h4>Severity*</h4>
 									<select type="text" name="severity">
-                        
+
                             <option type="text"value="1">1</option>
                             <option type="text"value="2">2</option>
                             <option value="3" type="text">3</option>
@@ -442,7 +451,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<h4>Road Category*</h4>
 
 									<select type="text" name="category">
-                        
+
                             <option type="text"value="highway">Highway</option>
                             <option type="text"value="driveway">Driveway</option>
                             <option value="parkway" type="text">Parkway</option>
@@ -453,7 +462,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 								<h4>Surface*</h4>
 								<select type="text" name="surface">
-                        
+
                             <option type="text"value="tarmac">Tarmac </option>
                             <option type="text"value="dirt">Dirt </option>
                             <option value="paved" type="text">Paved </option>
@@ -463,7 +472,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 								<h4>Weather*</h4>
 								<select type="text" name="weather">
-                        
+
                             <option type="text"value="normal">NORMAL</option>
                             <option type="text"value="fog">FOG</option>
                             <option value="rain" type="text">RAIN</option>
