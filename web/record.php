@@ -433,7 +433,7 @@ echo $thediv->textContent."sssssssssssssss";
 									echo "<script type='text/javascript'>
 
 									console.log('Alert Callback');
-								            bootbox.alert('Error Occured', function() {
+								            bootbox.alert('Success', function() {
 
 								            });
 
