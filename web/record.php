@@ -63,6 +63,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<script type="text/javascript" src="//www.sanwebe.com/wp-content/themes/sanwebe-lite/js/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyBwvyOwVQpg2UDaGeohdIdD1qIU0eBOuNU&libraries=places&sensor=false"></script>
+
+
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootbox.min.js"></script>
+
 	  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -70,10 +75,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.css"/>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
-
+ 
 	<link rel="stylesheet" href="css/datepicker.css"/>
 	<script src="datepicker/datepicker.js"></script>
-
+	
 	 <script>
   $( function() {
 	  $('#basic_example_1').datetimepicker();
@@ -81,9 +86,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   </script>
 
 	<script type="text/javascript">
-
+		
 		$(document).ready(function() {
-
+		
 				var mapCenter = new google.maps.LatLng(47.6145, -122.3418); //Google map Coordinates
 				var map;
 				map_initialize(); // load map
@@ -110,13 +115,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						var marker = new google.maps.Marker({
 							position: event.latLng, //map Coordinates where user right clicked
 							map: map,
-							draggable: true, //set marker draggable
+							draggable: true, //set marker draggable 
 							animation: google.maps.Animation.DROP, //bounce animation
 							title: "Hello World!",
 							icon: "images/pin_green.png" //custom pin icon
 						});
 						var position = event.latLng;
-
+						
 
 
 						document.cookie = "latLang=position";
@@ -134,11 +139,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						//set the content of infoWindow
 						infowindow.setContent(contentString[0]);
 
-						//add click listner to marker which will open infoWindow
+						//add click listner to marker which will open infoWindow 		 
 						google.maps.event.addListener(marker, 'click', function() {
-							infowindow.open(map, marker); // click on marker opens info window
+							infowindow.open(map, marker); // click on marker opens info window 
 
-							alert(document.getElementById('theposition').value) ;
+							document.getElementById('latlang').value = "ssssssss";
 						});
 
 
@@ -264,7 +269,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			font: 18px Georgia, "Times New Roman", Times, serif;
 		}
 		/* width and height of google map */
-
+		
 		#google_map {
 			width: 100%;
 			height: 500px;
@@ -275,7 +280,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			border-radius: 5px;
 		}
 		/* Marker Info Window */
-
+		
 		h1.marker-heading {
 			color: #585858;
 			margin: 0px;
@@ -283,16 +288,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			font: 18px "Trebuchet MS", Arial;
 			border-bottom: 1px dotted #D8D8D8;
 		}
-
+		
 		div.marker-info-win p {
 			padding: 0px;
 			margin: 10px 0px 10px 0;
 		}
-
+		
 		div.marker-inner-win {
 			padding: 5px;
 		}
-
+		
 		button.save-marker,
 		button.remove-marker {
 			border: none;
@@ -332,15 +337,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		})();
 
 	</script>
+
+
+
+
+
+
+	<script>
+        $(document).on("click", ".alert", function(e) {
+            bootbox.alert("Hello Success!", function() {
+                console.log("Alert Callback");
+            });
+        });
+    </script>
 </head>
 
 <?php
     session_start();
     $token = $_SESSION["token"];
+
+    $gps = $_COOKIE['geoPositionLocation'];
+
+
     $county = $_POST["county"];
     $date = $_POST["date"];
-	//$date = date("Y-m-d H:i:s",time())
-
     $severity = $_POST["severity"];
     $category = $_POST["category"];
     $surface = $_POST["surface"];
@@ -374,7 +394,7 @@ echo $thediv->textContent."sssssssssssssss";
 						//$body =  "";
 
 							$ch = curl_init(); // intialize curl
-							curl_setopt($ch, CURLOPT_URL, $ENDPOINT); // point to endpoint
+							curl_setopt($ch, CURLOPT_URL, $ENDPOINT); // point to endpoint 
 							//curl_setopt($ch, CURLOPT_HEADER, $HEADER); // if no headers
 
 							curl_setopt($ch,CURLOPT_HTTPHEADER,array($HEADER, $HEADER2));
@@ -388,16 +408,41 @@ echo $thediv->textContent."sssssssssssssss";
 
 							$result=curl_exec($ch);
 
+							
+								if ($jsonDecoded['id']) {
 
-							$jsonDecoded = json_decode($result, true);
+									
+									# success
+									//echo "Success!";
 
-							if ($jsonDecoded['id']) {
-								# success
-								echo "Posted Successfully";
-							}
-							else
-							{
-								echo $jsonDecoded['error']['message'];
+									echo "<script type='text/javascript'>
+
+								            bootbox.alert('Success!', function() {
+								                console.log('Alert Callback');
+								            });
+								      
+								    </script>";
+
+								
+
+
+								}
+								else
+								{
+									$errorMessage = $jsonDecoded['error']['message'];
+									echo $errorMessage;
+									
+									echo "<script type='text/javascript'>
+
+								            bootbox.alert('Error Occured', function() {
+								                console.log('Alert Callback');
+
+								            });
+								      
+								    </script>";
+
+									
+								}
 							}
 
 
@@ -407,7 +452,7 @@ echo $thediv->textContent."sssssssssssssss";
 							echo $e;
 						}
 
-
+	
 	 $phpVar =  $_COOKIE['latLang'];
 
    echo $phpVar;
@@ -417,14 +462,13 @@ echo $thediv->textContent."sssssssssssssss";
 
 
 
-
 	<body>
 		<div class="main">
 			<div style="margin-top: -39px;">
 				<h1 style style="font-size: 1.8em;"><image src="images/group.png" alt=""/>PHG WEB PORTAL DEMO </h1>
 
          <!--input class="hasDatepicker" name="basic_example_1" id="basic_example_1" value="" type="text"-->
-
+ 
 			</div>
 			<!-- Modal -->
 			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -437,11 +481,11 @@ echo $thediv->textContent."sssssssssssssss";
 							<form action="#" method="post">
 								<h4>County*</h4>
 								<input type="text" name="county" placeholder="Your County" required=" ">
-
+								
 								<div style="float: right">
 									<h4>Severity*</h4>
 									<select type="text" name="severity">
-
+                        
                             <option type="text"value="1">1</option>
                             <option type="text"value="2">2</option>
                             <option value="3" type="text">3</option>
@@ -451,7 +495,7 @@ echo $thediv->textContent."sssssssssssssss";
 									<h4>Road Category*</h4>
 
 									<select type="text" name="category">
-
+                        
                             <option type="text"value="highway">Highway</option>
                             <option type="text"value="driveway">Driveway</option>
                             <option value="parkway" type="text">Parkway</option>
@@ -462,7 +506,7 @@ echo $thediv->textContent."sssssssssssssss";
 
 								<h4>Surface*</h4>
 								<select type="text" name="surface">
-
+                        
                             <option type="text"value="tarmac">Tarmac </option>
                             <option type="text"value="dirt">Dirt </option>
                             <option value="paved" type="text">Paved </option>
@@ -472,7 +516,7 @@ echo $thediv->textContent."sssssssssssssss";
 
 								<h4>Weather*</h4>
 								<select type="text" name="weather">
-
+                        
                             <option type="text"value="normal">NORMAL</option>
                             <option type="text"value="fog">FOG</option>
                             <option value="rain" type="text">RAIN</option>
