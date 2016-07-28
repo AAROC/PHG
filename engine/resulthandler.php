@@ -3,7 +3,6 @@
 
 function pushresult($token, $gps, $severity, $id){
 
-echo "string";
   try {
       $ENDPOINT = 'http://glibrary.ct.infn.it:3500/v2/repos/phg/accident_analyser';
       $HEADER = 'Content-Type: application/json';

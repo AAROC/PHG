@@ -410,16 +410,7 @@ echo $thediv->textContent."sssssssssssssss";
 
 							$result=curl_exec($ch);
 
-<<<<<<< HEAD
 
-=======
-								$result=curl_exec($ch);								
-								$jsonDecoded = json_decode($result, true);
-
-								echo $jsonDecoded['id'];
-
-							
->>>>>>> d1bebcc1d828a6d889ac00fd1014b4c3a34e3ee3
 								if ($jsonDecoded['id']) {
 
 
@@ -441,8 +432,8 @@ echo $thediv->textContent."sssssssssssssss";
 
 									echo "<script type='text/javascript'>
 
+									console.log('Alert Callback');
 								            bootbox.alert('Error Occured', function() {
-								                console.log('Alert Callback');
 
 								            });
 
@@ -450,7 +441,7 @@ echo $thediv->textContent."sssssssssssssss";
 
 
 								}
-							
+
 
 						}
 						catch(Exception $e)

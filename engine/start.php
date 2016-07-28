@@ -11,7 +11,6 @@ if (!$data->error) {
 
     if (!empty($token)) {
       try {
-        echo "22222222222222222";
       fetch_accidents($token);
 
       } catch (Exception $e) {
@@ -20,7 +19,6 @@ if (!$data->error) {
 
 
     } else {
-      echo "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
         exit(0);
     }
 } else {
