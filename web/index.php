@@ -14,25 +14,23 @@ A SCI-GaIA Based project.
 -->
 <!DOCTYPE html>
 
-<!DOCTYPE html>
-
 <?php
-    
-    
+
+
 						$password = $_POST['Password'];
 						$Username = $_POST['Username'];
 
 
 						//echo $Username." ".$password;
 						try{
-						
+
 						$ENDPOINT = "http://glibrary.ct.infn.it:3500/v2/users/login";
 						$HEADER = "Content-Type: application/json";
 						$body = json_encode(array("username" => $Username, "password" => $password));
 						//$body =  "";
 
 							$ch = curl_init(); // intialize curl
-							curl_setopt($ch, CURLOPT_URL, $ENDPOINT); // point to endpoint 
+							curl_setopt($ch, CURLOPT_URL, $ENDPOINT); // point to endpoint
 							//curl_setopt($ch, CURLOPT_HEADER, $HEADER); // if no headers
 
 							curl_setopt($ch,CURLOPT_HTTPHEADER,array('Content-Type: application/json'));
@@ -46,9 +44,9 @@ A SCI-GaIA Based project.
 
 							$result=curl_exec($ch);
 
-							
+
 							$data = json_decode($result);
-							
+
 
 
 						}
@@ -66,7 +64,7 @@ A SCI-GaIA Based project.
         <!-- for-mobile-apps -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="keywords" content="Easy Multiple Forms Widget Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+        <meta name="keywords" content="Easy Multiple Forms Widget Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
         <script type="application/x-javascript">
             addEventListener("load", function() {
@@ -108,7 +106,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 #success
                                 session_start();
                                 $_SESSION["token"] = $data->id;
-                                
+
 
                                 header('Location: record.php');
                                 exit();

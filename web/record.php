@@ -20,7 +20,7 @@ A SCI-GaIA Based project.
 	<!-- for-mobile-apps -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="Easy Multiple Forms Widget Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+	<meta name="keywords" content="Easy Multiple Forms Widget Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 	<script type="application/x-javascript">
 		addEventListener("load", function() {
@@ -52,12 +52,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
 	<!-- //for-mobile-apps -->
 	<!-- js -->
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/map.js"></script>
-	
 
 	<!-- //js -->
 	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -86,7 +84,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	  $('#basic_example_1').datetimepicker();
   } );
   </script>
-
 
 	<script type="text/javascript">
 		
@@ -134,9 +131,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							'<h1 class="marker-heading">New Marker</h1>' +
 							'This is a new marker infoWindow' +
 							'</span>' +
-							'<br /><button name="remove-marker" class="remove-marker" title="Remove Marker" style="margin-top: 10px;">Remove Marker</button> <button id="geoPositionLocation" name="report-marker" value="' + position + '" title="Report" style="margin-top: 10px;"class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Record</button></div></div>');
-
-						document.cookie = "geoPositionLocation="+position;
+							'<br /><button name="remove-marker"  class="remove-marker" title="Remove Marker" style="margin-top: 10px;">Remove Marker</button> <button name="report-marker" id="theposition" value="' + position + '" title="Report" style="margin-top: 10px;"class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Record</button></div></div>');
 
 						//Create an infoWindow
 						var infowindow = new google.maps.InfoWindow();
@@ -149,7 +144,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							infowindow.open(map, marker); // click on marker opens info window 
 
 							document.getElementById('latlang').value = "ssssssss";
-
 						});
 
 
@@ -378,17 +372,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     $vehicleplate = $_POST["vehicleplate"];
     $description = $_POST["description"];
 
-    		
-    
-				try{
-						
+
+
+$doc = new DomDocument();
+$thediv = $doc->getElementById('theposition');
+echo $thediv->textContent."sssssssssssssss";
+
+
+
+    //echo $token.$date.$description.$category.$surface.$weather.$location.$passagerno.$vehiclemake.$vehiclemodel.$vehicleplate.$message;
+
+    				try{
+
 						$ENDPOINT = "http://glibrary.ct.infn.it:3500/v2/repos/phg/accident_police";
 						$HEADER = "Authorization: ".$token;
 						$HEADER2 = "Content-Type: application/json";
 						$body = json_encode(array("location" => $location, "date" => $date //"severity" => $severity
 							, "roadLayout" => $category, "surface" => $surface, "weather" => $weather, "passengers" => $passagerno
-							, "vehicleMake" => $vehiclemake, "vehicleModel" => $vehiclemodel, "county" => $county, "severity" => $severity
-							, "vehiclePlates" => $vehicleplate, "description" => $description, "gps" => $gps));
+							, "vehicleMake" => $vehiclemake, "vehicleModel" => $vehiclemodel, "county" => $county
+							, "vehiclePlates" => $vehicleplate, "description" => $description));
 						//$body =  "";
 
 							$ch = curl_init(); // intialize curl
@@ -404,14 +406,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, '0'); // no ssl verifictaion
 							curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, '0');
 
-							
-
-							if ($county != null && $location != null) {
+							$result=curl_exec($ch);
 
 								$result=curl_exec($ch);								
 								$jsonDecoded = json_decode($result, true);
 
 								echo $jsonDecoded['id'];
+
 							
 								if ($jsonDecoded['id']) {
 
@@ -455,12 +456,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						{
 							echo $e;
 						}
-			
 
 	
 	 $phpVar =  $_COOKIE['latLang'];
 
-   //echo $phpVar;
+   echo $phpVar;
     //echo $token;
 
 ?>
@@ -486,8 +486,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<form action="#" method="post">
 								<h4>County*</h4>
 								<input type="text" name="county" placeholder="Your County" required=" ">
-
-								<h4>Date*</h4>	<input type="text" name="date" placeholder="Date of accident " required=" ">
 								
 								<div style="float: right">
 									<h4>Severity*</h4>
