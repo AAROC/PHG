@@ -26,14 +26,14 @@ function fetch_accidents($token)
         $data = json_decode($result);
         $positionunfiltred = array();
         $clusterids = array();
-        droptables($token);
+       droptables($token);
        for ($i=0; $i < sizeof($data); $i++) {
+         echo "string888888888";
             array_push($positionunfiltred, $data[$i]->gps);
-            
             //array_push($position,"blue","yellow");
             //array_push($position,floor($data[$i]->gps));
-            pushresult($token,$data[$i]->gps,$data[$i]->severity,$data[$i]->id);
-
+            //pushresult($token,$data[$i]->gps,$data[$i]->severity,$data[$i]->id);
+//var_dump($data);
 
 
 

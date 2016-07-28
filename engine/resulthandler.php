@@ -3,7 +3,7 @@
 
 function pushresult($token, $gps, $severity, $id){
 
-
+echo "string";
   try {
       $ENDPOINT = 'http://glibrary.ct.infn.it:3500/v2/repos/phg/accident_analyser';
       $HEADER = 'Content-Type: application/json';
@@ -67,9 +67,10 @@ function droptables($token){
       $data = json_decode($result);
       $positionunfiltred = array();
       $clusterids = array();
-      droptables($token);
      for ($i=0; $i < sizeof($data); $i++) {
-          execdelete($data[$i]->id), $token);
+          execdelete($data[$i]->id, $token);
+        //var_dump($data);
+
       }
     //  print_r($positionunfiltred);
   } catch (Exception $e) {

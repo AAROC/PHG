@@ -1,9 +1,11 @@
  <?php
-$Username = 'muokid3';
-$password = 'st34lthfr34k';
-
 //echo $Username." ".$password;
 function acquiretookenk(){
+
+
+ $Username = 'muokid3';
+ $password = 'st34lthfr34k';
+
   try {
       $ENDPOINT = 'http://glibrary.ct.infn.it:3500/v2/users/login';
       $HEADER = 'Content-Type: application/json';
@@ -31,9 +33,9 @@ function acquiretookenk(){
       $result = curl_exec($ch);
 
       $data = json_decode($result);
-
+      session_start();
       $_SESSION['token'] = $data->id;
-      print_r($data);
+
   } catch (Exception $e) {
       echo $e;
   }
