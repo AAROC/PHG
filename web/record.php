@@ -410,6 +410,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 								$result=curl_exec($ch);								
 								$jsonDecoded = json_decode($result, true);
+
+								echo $jsonDecoded['id'];
 							
 								if ($jsonDecoded['id']) {
 

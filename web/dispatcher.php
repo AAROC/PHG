@@ -24,6 +24,7 @@
 							$result=curl_exec($ch);								
 							$jsonDecoded = json_decode($result, true);
 							echo $result;
+							//echo sizeof($jsonDecoded);
 
 
 						}
